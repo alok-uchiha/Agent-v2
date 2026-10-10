@@ -1,0 +1,47 @@
+:root {
+  --bg: #19191b; --panel: #232326; --panel-2: #2c2c30; --line: #38383d;
+  --text: #ececf0; --muted: #9b9ba5; --blue: #3c5bd6; --danger: #ff8a8a;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  font-family: "Inter", "Google Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+::selection { background: #3c5bd688; }
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+
+.stage { min-height: 100%; position: relative; display: flex; flex-direction: column; overflow: hidden; }
+.stage > *:not(.bg) { position: relative; z-index: 1; }
+
+/* animated glow */
+.bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.bg i { position: absolute; border-radius: 50%; filter: blur(100px); }
+.bg i:nth-child(1) { width: 48vw; height: 36vw; left: 26vw; top: 46vh; background: #1f2f78; opacity: .7; animation: drift1 16s ease-in-out infinite alternate; }
+.bg i:nth-child(2) { width: 30vw; height: 30vw; left: 52vw; top: 24vh; background: #2b3a9a; opacity: .28; animation: drift2 22s ease-in-out infinite alternate; }
+.bg i:nth-child(3) { width: 26vw; height: 26vw; left: 18vw; top: 30vh; background: #4a2f8f; opacity: .22; animation: drift3 26s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(6vw, -8vh) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-8vw, 10vh) scale(.85); } }
+@keyframes drift3 { to { transform: translate(10vw, 6vh) scale(1.2); } }
+
+/* logo star */
+.spark {
+  display: inline-block; flex: none;
+  background: conic-gradient(from 200deg, #4285f4, #9b72cb, #d96570, #f4b400, #4285f4);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+.spark.spin { animation: spin 2.4s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* shared motion */
+.reveal span { display: inline-block; opacity: 0; transform: translateY(10px); filter: blur(6px); animation: word .7s var(--ease) forwards; }
+@keyframes word { to { opacity: 1; transform: none; filter: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.rise-1 { animation: rise .7s var(--ease) .35s both; }
+.rise-2 { animation: rise .7s var(--ease) .5s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; }
+}

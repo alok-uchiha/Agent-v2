@@ -1,0 +1,28 @@
+.topbar { padding: 20px 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+.home { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; margin-top: -40px; }
+.hero { font-size: clamp(32px, 5.5vw, 52px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 14px; max-width: 13em; }
+.sub { color: var(--muted); max-width: 30em; margin: 0 0 34px; line-height: 1.55; animation: rise .7s var(--ease) .5s both; }
+
+.card {
+  width: min(400px, 100%); background: color-mix(in srgb, var(--panel) 88%, transparent); backdrop-filter: blur(14px);
+  border: 1px solid #ffffff12; border-radius: 26px; padding: 20px; text-align: left;
+  display: flex; flex-direction: column; gap: 12px; animation: rise .7s var(--ease) .65s both;
+}
+.tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border-radius: 999px; padding: 4px; margin-bottom: 4px; }
+.tabs::before {
+  content: ""; position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  background: var(--line); border-radius: 999px; transition: transform .35s var(--ease);
+}
+.tabs[data-mode="register"]::before { transform: translateX(100%); }
+.tabs button { position: relative; border: 0; background: none; padding: 9px; border-radius: 999px; color: var(--muted); font-weight: 500; transition: color .2s; }
+.tabs button.on { color: var(--text); }
+
+.card input { background: var(--bg); border: 1px solid transparent; border-radius: 14px; padding: 13px 16px; outline: none; transition: border-color .2s, box-shadow .2s; }
+.card input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px #3c5bd626; }
+.slide-in { animation: rise .35s var(--ease) both; }
+.primary { background: var(--blue); border: 0; border-radius: 999px; padding: 13px; font-weight: 600; color: #fff; margin-top: 4px; transition: transform .15s, filter .2s; }
+.primary:hover:not(:disabled) { filter: brightness(1.12); }
+.primary:active:not(:disabled) { transform: scale(.98); }
+.primary:disabled { opacity: .6; cursor: default; }
+.err { color: var(--danger); margin: 0; font-size: 14px; animation: rise .25s var(--ease); }

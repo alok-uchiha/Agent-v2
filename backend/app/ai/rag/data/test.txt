@@ -1,0 +1,21 @@
+## About Aroku
+
+Aroku is a software company focused on building AI-powered business assistants.
+
+The Aroku support assistant can help customers with questions about products, orders, appointments, refunds, and company policies.
+
+## Refund Policy
+
+Customers can request a refund within 30 days of purchase.
+
+## Shipping Policy
+
+Standard shipping usually takes between 5 and 7 business days.
+
+## Appointments
+
+Appointments can be scheduled during the company's working hours.
+
+## AI Assistant
+
+The AI assistant uses retrieval augmented generation to retrieve relevant company information before generating an answer.
